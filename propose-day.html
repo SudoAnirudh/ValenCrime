@@ -6,31 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propose Day | Anti-Valentine 2026</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Fredoka+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body>
-    <header class="hero">
-        <div class="container">
-            <h1>Propose Day</h1>
-            <p class="subtitle">Confession Regret Day</p>
+<body class="mood-romantic">
+
+    <div id="fake-notification-bar" class="notification-bar"><span id="notification-text"></span></div>
+
+    <div class="mood-toggle-container">
+        <label class="switch"><input type="checkbox" id="mood-switch" onchange="toggleMood()"><span
+                class="slider round"></span></label>
+        <span id="mood-label" class="mood-label">Romantic Mode</span>
+    </div>
+
+    <header class="hero-new" style="min-height: 50vh;">
+        <div class="hero-content">
+            <h1 class="glitch" data-romantic="Propose Day" data-realistic="Regret Day">Propose Day</h1>
+            <p class="subtitle" data-romantic="Pour your heart out."
+                data-realistic="Don't do it. Capture the flag instead."></p>
         </div>
     </header>
 
-    <div class="container section">
-        <div class="day-card" id="propose-day">
-            <h3>Draft a Proposal</h3>
-            <p>Ready to ruin a perfectly good friendship? Click below.</p>
-            <button class="action-btn" onclick="draftProposal()">Draft Proposal</button>
-            <div id="proposal-result" class="result-box hidden"></div>
+    <section class="section-new chat-layout">
+        <div class="container">
+            <div class="feature-card chat-bubble right" style="max-width: 600px; margin: 0 auto;">
+                <div class="chat-sender">Your Anxiety</div>
+                <h3 data-romantic="Proposal Drafter" data-realistic="Rejection Simulator">Proposal Drafter</h3>
+                <p data-romantic="Find the perfect words."
+                    data-realistic="Prepare for the 'I see you as a friend' speech.">Find the perfect words.</p>
+
+                <button class="big-btn" onclick="draftProposal()" data-romantic="Write Love Letter 💌"
+                    data-realistic="Draft Bad Idea 🤡">
+                    Write Love Letter 💌
+                </button>
+                <div id="proposal-result" class="result-text hidden" style="margin-top:20px; font-size: 1.2rem;"></div>
+            </div>
+        </div>
+
+        <div class="container" style="text-align: center; margin-top: 40px;">
+            <a href="rose-day.html" class="small-btn outline-btn">← Back</a>
+            <a href="chocolate-day.html" class="small-btn">Next Disaster →</a>
+        </div>
+    </section>
+
+    <div class="stability-container">
+        <div class="stability-label">Stability: <span id="stability-score">100%</span></div>
+        <div class="stability-bar-bg">
+            <div id="stability-bar" class="stability-bar-fill" style="width: 100%;"></div>
         </div>
     </div>
 
-    <div class="container" style="margin-top: 20px;">
-        <a href="index.html" class="action-btn" style="background: #333;">Back to Calendar</a>
-        <a href="chocolate-day.html" class="action-btn">Next: Chocolate Day &rarr;</a>
-    </div>
-
+    <div id="toast-container"></div>
     <canvas id="heart-canvas"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>

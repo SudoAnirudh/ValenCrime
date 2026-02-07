@@ -4,129 +4,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anti-Valentine Survival Calendar 2026</title>
+    <title>Anti-Valentine Szn 2026</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Fredoka+One&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body>
+<body class="mood-romantic">
 
-    <header class="hero">
-        <div class="container">
-            <h1>Welcome to Valentine's Week</h1>
-            <p class="subtitle">A 7-day festival of awkward eye contact and bad decisions.</p>
+    <!-- Panic Mode Overlay -->
+    <div id="panic-overlay" class="hidden">
+        <div class="excel-grid">
+            <div class="excel-header">
+                <div>A</div>
+                <div>B</div>
+                <div>C</div>
+                <div>D</div>
+                <div>E</div>
+            </div>
+            <div class="excel-row">
+                <div class="row-num">1</div>
+                <div>Q1 Budget</div>
+                <div>$12,000</div>
+                <div>$14,500</div>
+                <div>-12%</div>
+            </div>
+            <div class="excel-row">
+                <div class="row-num">2</div>
+                <div>Q2 Forecast</div>
+                <div>$15,000</div>
+                <div>$13,200</div>
+                <div>+5%</div>
+            </div>
+            <div class="excel-row">
+                <div class="row-num">3</div>
+                <div>Expenses</div>
+                <div>$4,000</div>
+                <div>$4,200</div>
+                <div>NORMAL</div>
+            </div>
+            <div class="excel-row">
+                <div class="row-num">4</div>
+                <div>ROI</div>
+                <div>2.1%</div>
+                <div>3.4%</div>
+                <div>STABLE</div>
+            </div>
+            <div class="excel-row">
+                <div class="row-num">5</div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="excel-row">
+                <div class="row-num">6</div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="excel-row">
+                <div class="row-num">7</div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <!-- More fake rows for effect -->
+        </div>
+        <div class="panic-message">
+            <p>Scanning... Processing Data... Nothing to see here boss.</p>
+            <small>(Press ESC to return to chaos)</small>
+        </div>
+    </div>
+
+    <!-- Fake Notification Bar -->
+    <div id="fake-notification-bar" class="notification-bar">
+        <span id="notification-text">💔 Your ex just viewed your profile (probably via a burner account).</span>
+    </div>
+
+    <!-- Mood Switcher (Top Right) -->
+    <div class="mood-toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="mood-switch" onchange="toggleMood()">
+            <span class="slider round"></span>
+        </label>
+        <span id="mood-label" class="mood-label">Romantic Mode</span>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-new">
+        <div class="hero-content">
+            <h1 class="glitch" data-romantic="Celebrate Love Week" data-realistic="Survive The Cringe Week">
+                Celebrate Love Week
+            </h1>
+            <p class="subtitle" data-romantic="7 days of magical moments and heartfelt promises."
+                data-realistic="7 days of financial regret and temporary delusions.">
+                7 days of magical moments and heartfelt promises.
+            </p>
+
+            <div id="countdown-timer" class="modern-timer">
+                <div class="time-box">
+                    <span id="days">00</span><small>Days</small>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span><small>Hours</small>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span><small>Mins</small>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span><small>Secs</small>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <button class="big-btn" onclick="triggerLove()" data-romantic="I'm in Love 💖"
+                    data-realistic="I'm Delusional 🤡">
+                    I'm in Love 💖
+                </button>
+                <button class="big-btn outline-btn scroll-btn"
+                    onclick="document.getElementById('reality-check').scrollIntoView({behavior: 'smooth'})"
+                    data-romantic="Explore the Magic ✨" data-realistic="Enter the Reality Zone 💀">
+                    Explore the Magic ✨
+                </button>
+            </div>
         </div>
     </header>
 
-    <section id="countdown" class="section">
+    <!-- Mental Stability Progress Bar -->
+    <div class="stability-container">
+        <div class="stability-label">Mental Stability: <span id="stability-score">100%</span></div>
+        <div class="stability-bar-bg">
+            <div id="stability-bar" class="stability-bar-fill" style="width: 100%;"></div>
+        </div>
+    </div>
+
+    <!-- The 7 Days (Chat Bubble Style) -->
+    <section id="the-week" class="section-new chat-layout">
         <div class="container">
-            <h2>Time left to pretend you don't care:</h2>
-            <div id="countdown-timer">
-                <div class="time-unit">
-                    <span id="days">00</span>
-                    <label>Days</label>
+            <h2 class="section-title" data-romantic="The 7 Days of Love" data-realistic="The 7 Stages of Grief">
+                The 7 Days of Love
+            </h2>
+
+            <div class="days-grid-new">
+                <!-- Rose Day -->
+                <a href="rose-day.html" class="day-card-new emotional-damage" data-damage="20%">
+                    <span>🌹</span>
+                    <h3 data-romantic="Rose Day" data-realistic="Plastic Waste Day">Rose Day</h3>
+                    <p class="inner-thought" data-text=' "This rose will die before the relationship." '>Hover me</p>
+                </a>
+
+                <!-- Propose Day -->
+                <a href="propose-day.html" class="day-card-new emotional-damage" data-damage="40%">
+                    <span>💍</span>
+                    <h3 data-romantic="Propose Day" data-realistic="Regret Day">Propose Day</h3>
+                    <p class="inner-thought" data-text=' "Hope you kept the receipt for that ring." '>Hover me</p>
+                </a>
+
+                <!-- Chocolate Day -->
+                <a href="chocolate-day.html" class="day-card-new emotional-damage" data-damage="15%">
+                    <span>🍫</span>
+                    <h3 data-romantic="Chocolate Day" data-realistic="Diabetes Day">Chocolate Day</h3>
+                    <p class="inner-thought" data-text=' "Eat away the pain." '>Hover me</p>
+                </a>
+
+                <!-- Teddy Day -->
+                <a href="teddy-day.html" class="day-card-new emotional-damage" data-damage="10%">
+                    <span>🧸</span>
+                    <h3 data-romantic="Teddy Day" data-realistic="Dust Collector Day">Teddy Day</h3>
+                    <p class="inner-thought" data-text=' "It is going to end up in a landfill." '>Hover me</p>
+                </a>
+
+                <!-- Promise Day -->
+                <a href="promise-day.html" class="day-card-new emotional-damage" data-damage="70%">
+                    <span>🤞</span>
+                    <h3 data-romantic="Promise Day" data-realistic="Empty Lies Day">Promise Day</h3>
+                    <p class="inner-thought" data-text=' "Promises are made to be broken." '>Hover me</p>
+                </a>
+
+                <!-- Hug Day -->
+                <a href="hug-day.html" class="day-card-new emotional-damage" data-damage="30%">
+                    <span>🤗</span>
+                    <h3 data-romantic="Hug Day" data-realistic="Awkward Contact Day">Hug Day</h3>
+                    <p class="inner-thought" data-text=' "Do not make it weird." '>Hover me</p>
+                </a>
+
+                <!-- Kiss Day -->
+                <a href="kiss-day.html" class="day-card-new emotional-damage" data-damage="50%">
+                    <span>💋</span>
+                    <h3 data-romantic="Kiss Day" data-realistic="Hygiene Check Day">Kiss Day</h3>
+                    <p class="inner-thought" data-text=' "Hope they brushed their teeth." '>Hover me</p>
+                </a>
+
+                <!-- Valentine's Day -->
+                <a href="valentines-day.html" class="day-card-new special emotional-damage" data-damage="99%">
+                    <span>❤️</span>
+                    <h3 data-romantic="Valentine's Day" data-realistic="Bankrupt Day">Valentine's Day</h3>
+                    <p class="inner-thought" data-text=' "Your wallet is crying." '>Hover me</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reality Check Zone (Chat Style) -->
+    <section id="reality-check" class="section-new alt-bg chat-layout">
+        <div class="container">
+            <h2 class="section-title" data-romantic="Relationship Tools" data-realistic="Toxic Tools 🤡">
+                Relationship Tools
+            </h2>
+
+            <div class="grid-layout">
+                <!-- Text Translator -->
+                <div class="feature-card chat-bubble left">
+                    <div class="chat-sender">Common Sense</div>
+                    <h3 data-romantic="Text Translator" data-realistic="Mixed Signal Decoder">Text Translator</h3>
+                    <p data-romantic="Understand their love language." data-realistic="Decode their lies.">Understand
+                        their love language.</p>
+
+                    <div class="input-group">
+                        <select id="text-input" class="modern-select">
+                            <option value="" disabled selected>Select message...</option>
+                            <option value="k">"K."</option>
+                            <option value="haha">"Haha"</option>
+                            <option value="wyd">"Wyd?"</option>
+                            <option value="busy">"Busy rn"</option>
+                            <option value="see">"Let's see"</option>
+                        </select>
+                        <button class="small-btn" onclick="translateText()" data-romantic="Translate ✨"
+                            data-realistic="Expose Truth 💀">
+                            Translate ✨
+                        </button>
+                    </div>
+                    <div id="translation-result" class="result-text hidden"></div>
                 </div>
-                <div class="time-unit">
-                    <span id="hours">00</span>
-                    <label>Hours</label>
+
+                <!-- Simp-o-Meter -->
+                <div class="feature-card chat-bubble right">
+                    <div class="chat-sender">Bad Decisions</div>
+                    <h3 data-romantic="Devotion Meter" data-realistic="Simp-o-Meter 5000">Devotion Meter</h3>
+                    <div class="checkbox-list">
+                        <label><input type="checkbox" class="simp-check"> <span data-romantic="Fast Replies"
+                                data-realistic="Desperate Replies">Fast Replies</span></label>
+                        <label><input type="checkbox" class="simp-check"> <span data-romantic="Thoughtful Gifts"
+                                data-realistic="Buying Their Love">Thoughtful Gifts</span></label>
+                        <label><input type="checkbox" class="simp-check"> <span data-romantic="Forgiving Nature"
+                                data-realistic="No Self Respect">Forgiving Nature</span></label>
+                    </div>
+                    <button class="small-btn" onclick="checkSimpLevel()" data-romantic="Check Love Level ❤️"
+                        data-realistic="Diagnose Me 🚑">
+                        Check Love Level ❤️
+                    </button>
+                    <div id="simp-result" class="result-text hidden"></div>
                 </div>
-                <div class="time-unit">
-                    <span id="minutes">00</span>
-                    <label>Mins</label>
-                </div>
-                <div class="time-unit">
-                    <span id="seconds">00</span>
-                    <label>Secs</label>
+
+                <!-- Wheel -->
+                <div class="feature-card chat-bubble left">
+                    <div class="chat-sender">Common Sense</div>
+                    <h3 data-romantic="Wheel of Destiny" data-realistic="Wheel of Forever Alone">Wheel of Destiny</h3>
+                    <div id="wheel-container" style="transform: scale(0.8);">
+                        <div id="wheel">Spin Me</div>
+                    </div>
+                    <button class="small-btn" onclick="spinWheel()" data-romantic="Spin the Wheel ✨"
+                        data-realistic="Spin Your Fate 💀">
+                        Spin the Wheel ✨
+                    </button>
+                    <div id="wheel-result" class="result-text hidden"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="character-select" class="section">
+    <!-- Meme Resume -->
+    <section class="section-new">
         <div class="container">
-            <h2>Choose Your Character</h2>
-            <div class="character-grid">
-                <button class="character-btn" data-char="single">Single Legend</button>
-                <button class="character-btn" data-char="situationship">Situationship Victim</button>
-                <button class="character-btn" data-char="forced">Forced Couple</button>
-                <button class="character-btn" data-char="exam">Exam Season Warrior</button>
-            </div>
-            <div id="character-status" class="hidden">
-                <p>Status: <span id="status-text">Select a character...</span></p>
-                <p class="advice" id="ai-advice"></p>
+            <h2 class="section-title" data-romantic="Your Love Story" data-realistic="Your Clown Career">
+                Your Love Story
+            </h2>
+            <div class="resume-wrapper">
+                <button id="start-story-btn" class="big-btn" onclick="startStoryMode()"
+                    data-romantic="Write My Story 📖" data-realistic="Generate Clown CV 🤡">
+                    Write My Story 📖
+                </button>
+                <div id="story-container" class="hidden"></div>
+                <div id="resume-result" class="result-paper hidden"></div>
             </div>
         </div>
     </section>
 
-    <section id="the-week" class="section">
+    <!-- Doomed Love Calculator -->
+    <section class="section-new alt-bg">
         <div class="container">
-            <h2>The 7 Days (But Honest)</h2>
-            <div class="days-nav-grid">
-                <a href="rose-day.html" class="day-link-card">🌹 Rose Day</a>
-                <a href="propose-day.html" class="day-link-card">💍 Propose Day</a>
-                <a href="chocolate-day.html" class="day-link-card">🍫 Chocolate Day</a>
-                <a href="teddy-day.html" class="day-link-card">🧸 Teddy Day</a>
-                <a href="promise-day.html" class="day-link-card">🤞 Promise Day</a>
-                <a href="hug-day.html" class="day-link-card">🤗 Hug Day</a>
-                <a href="kiss-day.html" class="day-link-card">💋 Kiss Day</a>
-                <a href="valentines-day.html" class="day-link-card highlight">💔 Valentine's Day</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="viral-features" class="section">
-        <div class="container">
-            <h2>Viral Features</h2>
-
-            <div class="feature-block">
-                <h3>Breakup Simulator</h3>
-                <input type="text" id="ex-name" placeholder="Enter Ex's Name">
-                <button class="action-btn" onclick="simulateBreakup()">Generate Dialogue</button>
-                <div id="breakup-result" class="result-box hidden"></div>
-            </div>
-
-            <div class="feature-block">
-                <h3>Red Flag Detector</h3>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" class="red-flag"> Replies in 4-6 business days</label>
-                    <label><input type="checkbox" class="red-flag"> Says "let's see"</label>
-                    <label><input type="checkbox" class="red-flag"> Still follows ex</label>
-                    <label><input type="checkbox" class="red-flag"> "I don't like labels"</label>
+            <h2 class="section-title" data-romantic="Soulmate Calculator 💖" data-realistic="Doomed Love Calculator 💔">
+                Soulmate Calculator 💖
+            </h2>
+            <div class="feature-card" style="max-width: 500px; margin: 0 auto; text-align: center;">
+                <p>Calculate your chances (Spoiler: It's bad).</p>
+                <div class="input-group" style="flex-direction: column; gap: 10px;">
+                    <input type="text" id="name1" class="modern-select" placeholder="Your Name">
+                    <span style="font-size: 1.5rem;">+</span>
+                    <input type="text" id="name2" class="modern-select" placeholder="Crush's Name">
                 </div>
-                <button class="action-btn" onclick="checkRedFlags()">Analyze</button>
-                <div id="flag-result" class="result-box hidden"></div>
+                <button class="big-btn" onclick="calculateDoomedLove()" style="margin-top: 20px;">Calculate Fate
+                    🔮</button>
+                <div id="love-result" class="result-text hidden"
+                    style="margin-top: 20px; font-weight: bold; font-size: 1.2rem;"></div>
             </div>
-
-            <div class="feature-block">
-                <h3>Lonely Playlist Generator</h3>
-                <button class="action-btn" onclick="generatePlaylist()">Generate Mood</button>
-                <div id="playlist-result" class="result-box hidden"></div>
-            </div>
-
-            <div class="feature-block">
-                <h3>Couple Filter</h3>
-                <p>Upload a photo to see the truth.</p>
-                <input type="file" id="couple-photo" accept="image/*">
-                <button class="action-btn" onclick="applyCoupleFilter()">Apply Filter</button>
-                <div id="couple-result" class="result-box hidden"></div>
-            </div>
-
         </div>
     </section>
 
-    <footer>
-        <p>Built with 💔 and caffeine. &copy; 2026 Anti-Valentine Inc.</p>
+    <!-- Footer -->
+    <div class="container">
+        <h2 class="section-title" data-romantic="Your Love Story" data-realistic="Your Clown Career">
+            Your Love Story
+        </h2>
+        <div class="resume-wrapper">
+            <button id="start-story-btn" class="big-btn" onclick="startStoryMode()" data-romantic="Write My Story 📖"
+                data-realistic="Generate Clown CV 🤡">
+                Write My Story 📖
+            </button>
+            <div id="story-container" class="hidden"></div>
+            <div id="resume-result" class="result-paper hidden"></div>
+        </div>
+    </div>
+    </section>
+
+    <footer class="footer-new">
+        <div class="footer-links">
+            <a href="#" data-romantic="About Us" data-realistic="Who hurt us?">About Us</a>
+            <a href="#" data-romantic="Contact" data-realistic="Cry Here">Contact</a>
+            <a href="#" data-romantic="Privacy Policy" data-realistic="We Judge Silently">Privacy Policy</a>
+        </div>
+        <p data-romantic="Made with Love ❤️" data-realistic="Made with Trauma & Caffeine ☕">Made with Love ❤️</p>
     </footer>
 
-    <!-- Background Effect -->
+    <!-- Background & Extras -->
     <canvas id="heart-canvas"></canvas>
-
-    <!-- Runaway Button -->
-    <button id="runaway-btn">Commitment</button>
-
-    <!-- Toasts Container -->
+    <button id="runaway-btn" data-romantic="Forever ❤️" data-realistic="Commitment 🏃‍♂️">Forever ❤️</button>
     <div id="toast-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
