@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Valentine Survival Calendar 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Welcome to Valentine's Week</h1>
+            <p class="subtitle">A 7-day festival of awkward eye contact and bad decisions.</p>
+        </div>
+    </header>
+
+    <section id="countdown" class="section">
+        <div class="container">
+            <h2>Time left to pretend you don't care:</h2>
+            <div id="countdown-timer">
+                <div class="time-unit">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="time-unit">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes">00</span>
+                    <label>Mins</label>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds">00</span>
+                    <label>Secs</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="character-select" class="section">
+        <div class="container">
+            <h2>Choose Your Character</h2>
+            <div class="character-grid">
+                <button class="character-btn" data-char="single">Single Legend</button>
+                <button class="character-btn" data-char="situationship">Situationship Victim</button>
+                <button class="character-btn" data-char="forced">Forced Couple</button>
+                <button class="character-btn" data-char="exam">Exam Season Warrior</button>
+            </div>
+            <div id="character-status" class="hidden">
+                <p>Status: <span id="status-text">Select a character...</span></p>
+                <p class="advice" id="ai-advice"></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="the-week" class="section">
+        <div class="container">
+            <h2>The 7 Days (But Honest)</h2>
+            <div class="days-nav-grid">
+                <a href="rose-day.html" class="day-link-card">🌹 Rose Day</a>
+                <a href="propose-day.html" class="day-link-card">💍 Propose Day</a>
+                <a href="chocolate-day.html" class="day-link-card">🍫 Chocolate Day</a>
+                <a href="teddy-day.html" class="day-link-card">🧸 Teddy Day</a>
+                <a href="promise-day.html" class="day-link-card">🤞 Promise Day</a>
+                <a href="hug-day.html" class="day-link-card">🤗 Hug Day</a>
+                <a href="kiss-day.html" class="day-link-card">💋 Kiss Day</a>
+                <a href="valentines-day.html" class="day-link-card highlight">💔 Valentine's Day</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="viral-features" class="section">
+        <div class="container">
+            <h2>Viral Features</h2>
+
+            <div class="feature-block">
+                <h3>Breakup Simulator</h3>
+                <input type="text" id="ex-name" placeholder="Enter Ex's Name">
+                <button class="action-btn" onclick="simulateBreakup()">Generate Dialogue</button>
+                <div id="breakup-result" class="result-box hidden"></div>
+            </div>
+
+            <div class="feature-block">
+                <h3>Red Flag Detector</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" class="red-flag"> Replies in 4-6 business days</label>
+                    <label><input type="checkbox" class="red-flag"> Says "let's see"</label>
+                    <label><input type="checkbox" class="red-flag"> Still follows ex</label>
+                    <label><input type="checkbox" class="red-flag"> "I don't like labels"</label>
+                </div>
+                <button class="action-btn" onclick="checkRedFlags()">Analyze</button>
+                <div id="flag-result" class="result-box hidden"></div>
+            </div>
+
+            <div class="feature-block">
+                <h3>Lonely Playlist Generator</h3>
+                <button class="action-btn" onclick="generatePlaylist()">Generate Mood</button>
+                <div id="playlist-result" class="result-box hidden"></div>
+            </div>
+
+            <div class="feature-block">
+                <h3>Couple Filter</h3>
+                <p>Upload a photo to see the truth.</p>
+                <input type="file" id="couple-photo" accept="image/*">
+                <button class="action-btn" onclick="applyCoupleFilter()">Apply Filter</button>
+                <div id="couple-result" class="result-box hidden"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Built with 💔 and caffeine. &copy; 2026 Anti-Valentine Inc.</p>
+    </footer>
+
+    <!-- Background Effect -->
+    <canvas id="heart-canvas"></canvas>
+
+    <!-- Runaway Button -->
+    <button id="runaway-btn">Commitment</button>
+
+    <!-- Toasts Container -->
+    <div id="toast-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
