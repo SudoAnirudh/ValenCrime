@@ -30,20 +30,6 @@ Interactive tools to help you navigate modern dating:
 - **Doomed Love Calculator**: Calculate the chances of your crush liking you back (Spoiler: It's bad).
 - **Panic Mode**: Need to look busy? Hit the Panic Mode to bring up a fake Excel sheet overlay.
 
-## 🚀 How to Run
-
-1.  Clone the repository.
-2.  Open `index.html` in your favorite web browser.
-3.  That's it! No build steps required.
-
-## 🛠️ Tech Stack
-
--   **HTML5 & CSS3**: Custom responsive design with CSS variables for theming.
--   **JavaScript (Vanilla)**: For all the interactive logic and mood switching.
--   **GSAP**: For smooth animations.
--   **Font Awesome**: For icons.
--   **Google Fonts**: "Outfit" and "Fredoka One" for typography.
-
 ## 📝 Credits
 
 Made with **Trauma & Caffeine ☕** (and a little bit of love).
